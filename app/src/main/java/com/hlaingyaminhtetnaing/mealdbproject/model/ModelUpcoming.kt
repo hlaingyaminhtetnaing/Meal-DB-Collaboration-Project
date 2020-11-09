@@ -14,13 +14,13 @@ data class ModelUpcoming(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItem?>? = null,
+	val results: List<ResultsItemUpcoming?>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null
 )
 
-data class ResultsItem(
+data class ResultsItemUpcoming(
 
 	@field:SerializedName("overview")
 	val overview: String? = null,

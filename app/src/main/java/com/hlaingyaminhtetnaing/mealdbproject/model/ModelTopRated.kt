@@ -11,13 +11,13 @@ data class ModelTopRated(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItem?>? = null,
+	val results: List<ResultsItemTopRated?>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null
 )
 
-data class ResultsItem(
+data class ResultsItemTopRated(
 
 	@field:SerializedName("overview")
 	val overview: String? = null,

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class ModelNowPlaying(
 
 	@field:SerializedName("dates")
-	val dates: Dates? = null,
+	val datesNowPlaying: DatesNowPlaying? = null,
 
 	@field:SerializedName("page")
 	val page: Int? = null,
@@ -14,13 +14,13 @@ data class ModelNowPlaying(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItem?>? = null,
+	val results: List<ResultsItemNowPlaying?>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null
 )
 
-data class ResultsItem1(
+data class ResultsItemNowPlaying(
 
 	@field:SerializedName("overview")
 	val overview: String? = null,
@@ -65,7 +65,7 @@ data class ResultsItem1(
 	val voteCount: Int? = null
 )
 
-data class Dates(
+data class DatesNowPlaying(
 
 	@field:SerializedName("maximum")
 	val maximum: String? = null,

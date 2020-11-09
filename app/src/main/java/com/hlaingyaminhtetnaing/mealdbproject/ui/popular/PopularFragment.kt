@@ -21,8 +21,8 @@ class PopularFragment : Fragment() {
     ): View? {
         popularViewModel =
                 ViewModelProvider(this).get(PopularViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
+        val root = inflater.inflate(R.layout.fragment_popular, container, false)
+        val textView: TextView = root.findViewById(R.id.popularRecycler)
         popularViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
