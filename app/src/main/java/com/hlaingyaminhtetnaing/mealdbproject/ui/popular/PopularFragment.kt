@@ -22,10 +22,7 @@ class PopularFragment : Fragment() {
         popularViewModel =
                 ViewModelProvider(this).get(PopularViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_popular, container, false)
-        val textView: TextView = root.findViewById(R.id.popularRecycler)
-        popularViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 }
