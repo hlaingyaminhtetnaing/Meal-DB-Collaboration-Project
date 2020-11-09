@@ -8,12 +8,15 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.hlaingyaminhtetnaing.mealdbproject.R
+import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemPopular
+import kotlinx.android.synthetic.main.fragment_popular.*
 
 class PopularFragment : Fragment() {
 
     private lateinit var popularViewModel: PopularViewModel
-
+    private lateinit var popularAdapter: PopularAdapter
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -24,4 +27,25 @@ class PopularFragment : Fragment() {
 
         return root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        popularViewModel = ViewModelProvider(this).get(PopularViewModel::class.java)
+        popularAdapter = PopularAdapter()
+        popularRecycler.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = popularAdapter
+        }
+        popularViewModel.getNowPlaying()?.observe(viewLifecycleOwner, Observer { playing ->
+            popularAdapter.resultPlay(playing.results as List<ResultsItemPopular>)
+        })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        popularViewModel.getLoadingPlay()
+    }
+
+
+
 }
