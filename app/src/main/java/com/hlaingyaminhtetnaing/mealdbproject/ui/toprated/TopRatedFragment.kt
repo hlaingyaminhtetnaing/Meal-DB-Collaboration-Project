@@ -1,7 +1,6 @@
 package com.hlaingyaminhtetnaing.mealdbproject.ui.toprated
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +8,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.hlaingyaminhtetnaing.mealdbproject.R
-import com.hlaingyaminhtetnaing.mealdbproject.adapter.TopRateAdapter
+import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemNowPlaying
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemTopRated
+import com.hlaingyaminhtetnaing.mealdbproject.ui.nowplaying.NowPlayingAdapter
+import com.hlaingyaminhtetnaing.mealdbproject.ui.nowplaying.NowPlayingViewModel
+import kotlinx.android.synthetic.main.fragment_playing.*
 import kotlinx.android.synthetic.main.fragment_top_rated.*
 
 
@@ -23,8 +24,11 @@ class TopRatedFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_top_rated, container, false)
+        viewModel = ViewModelProvider(this).get(TopRatedViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_top_rated, container, false)
 
+
+        return root
 
 
     }
@@ -33,7 +37,6 @@ class TopRatedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(TopRatedViewModel::class.java)
 
-        viewModel.loadTopRated()
         topRatedAdapter = TopRateAdapter()
 
         recyclerTopRated.apply {
@@ -43,9 +46,13 @@ class TopRatedFragment : Fragment() {
 
         viewModel.getTopRated().observe(
             viewLifecycleOwner, Observer {
-                topRatedAdapter.updateList(it.results as List<ResultsItemTopRated>)
+                topRatedAdapter.resultList(it.results as List<ResultsItemTopRated>)
             }
         )
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadTopRated()
+    }
 }
