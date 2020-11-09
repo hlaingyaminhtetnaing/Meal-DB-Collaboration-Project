@@ -15,7 +15,7 @@ import com.hlaingyaminhtetnaing.mealdbproject.R
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemNowPlaying
 import kotlinx.android.synthetic.main.fragment_playing.*
 
-class NowPlayingFragment : Fragment(), NowPlayingAdapter.OnClickListener {
+class NowPlayingFragment : Fragment(){
 
     private lateinit var nowPlayingViewModel: NowPlayingViewModel
     private lateinit var nowPlayingAdapter: NowPlayingAdapter
@@ -50,8 +50,6 @@ class NowPlayingFragment : Fragment(), NowPlayingAdapter.OnClickListener {
         nowPlayingViewModel.getLoadingPlay()
     }
 
-    override fun onClick(item: ResultsItemNowPlaying) {
-        TODO("Not yet implemented")
-    }
+
 
 }
