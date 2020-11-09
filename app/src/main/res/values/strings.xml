@@ -10,4 +10,8 @@
     <string name="menu_popular">Popular</string>
     <string name="menu_nowplaying">Now Playing</string>
     <string name="menu_lastestmovie">Latest Movie</string>
+    <string name="menu_toprated">Top Rated</string>
+    <string name="menu_upcoming">Up Coming</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

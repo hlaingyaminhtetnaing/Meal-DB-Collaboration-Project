@@ -13,5 +13,11 @@
         <item
             android:id="@+id/nav_slideshow"
             android:title="@string/menu_lastestmovie" />
+        <item
+            android:id="@+id/nav_toprated"
+            android:title="@string/menu_toprated" />
+        <item
+            android:id="@+id/nav_upcoming"
+            android:title="@string/menu_upcoming" />
     </group>
 </menu>

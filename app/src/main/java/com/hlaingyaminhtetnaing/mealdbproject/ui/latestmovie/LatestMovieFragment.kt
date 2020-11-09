@@ -19,13 +19,9 @@ class LatestMovieFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        lastestMovieViewModel =
-                ViewModelProvider(this).get(LastestMovieViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        lastestMovieViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 }
