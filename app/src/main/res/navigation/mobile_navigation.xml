@@ -22,4 +22,14 @@
         android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.latestmovie.LatestMovieFragment"
         android:label="@string/menu_lastestmovie"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_toprated"
+        android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.toprated.TopRatedFragment"
+        android:label="Top Rated"
+        tools:layout="@layout/fragment_top_rated" />
+    <fragment
+        android:id="@+id/nav_upcoming"
+        android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.upcoming.UpComingFragment"
+        android:label="Up Coming"
+        tools:layout="@layout/fragment_up_coming" />
 </navigation>

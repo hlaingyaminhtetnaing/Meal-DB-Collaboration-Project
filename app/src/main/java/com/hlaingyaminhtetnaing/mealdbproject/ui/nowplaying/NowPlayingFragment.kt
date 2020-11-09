@@ -24,9 +24,11 @@ class NowPlayingFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         nowPlayingViewModel =
             ViewModelProvider(this).get(NowPlayingViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_playing, container, false)
+
 
         return root
     }

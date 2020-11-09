@@ -22,8 +22,7 @@ class PopularFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        popularViewModel =
-                ViewModelProvider(this).get(PopularViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_popular, container, false)
 
         return root

@@ -19,8 +19,7 @@ class LatestMovieFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        lastestMovieViewModel =
-                ViewModelProvider(this).get(LastestMovieViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
 
         return root
