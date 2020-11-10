@@ -1,6 +1,8 @@
 package com.hlaingyaminhtetnaing.mealdbproject.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 data class ModelPopular(
 
@@ -16,7 +18,7 @@ data class ModelPopular(
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null
 )
-
+@Parcelize
 data class ResultsItemPopular(
 
 	@field:SerializedName("overview")
@@ -60,4 +62,4 @@ data class ResultsItemPopular(
 
 	@field:SerializedName("vote_count")
 	val voteCount: Int? = null
-)
+): Parcelable

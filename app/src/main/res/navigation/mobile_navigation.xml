@@ -9,13 +9,21 @@
         android:id="@+id/nav_home"
         android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.popular.PopularFragment"
         android:label="@string/menu_popular"
-        tools:layout="@layout/fragment_popular" />
+        tools:layout="@layout/fragment_popular" >
+        <action
+            android:id="@+id/action_nav_home_to_detailFragment2"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.nowplaying.NowPlayingFragment"
         android:label="@string/menu_nowplaying"
-        tools:layout="@layout/fragment_playing" />
+        tools:layout="@layout/fragment_playing" >
+        <action
+            android:id="@+id/action_nav_gallery_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -32,4 +40,16 @@
         android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.upcoming.UpComingFragment"
         android:label="Up Coming"
         tools:layout="@layout/fragment_up_coming" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="popular"
+            app:argType="com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemPopular" />
+        <argument
+            android:name="playing"
+            app:argType="com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemNowPlaying" />
+    </fragment>
 </navigation>

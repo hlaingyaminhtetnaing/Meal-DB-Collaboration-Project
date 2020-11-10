@@ -36,8 +36,8 @@ class PopularFragment : Fragment() {
             layoutManager = GridLayoutManager(context, 2)
             adapter = popularAdapter
         }
-        popularViewModel.getNowPlaying()?.observe(viewLifecycleOwner, Observer { playing ->
-            popularAdapter.resultPlay(playing.results as List<ResultsItemPopular>)
+        popularViewModel.getPopular()?.observe(viewLifecycleOwner, Observer { popular ->
+            popularAdapter.resultPlay(popular.results as List<ResultsItemPopular>)
         })
     }
 
