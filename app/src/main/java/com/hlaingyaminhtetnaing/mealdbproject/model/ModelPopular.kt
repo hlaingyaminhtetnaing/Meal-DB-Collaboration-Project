@@ -13,7 +13,7 @@ data class ModelPopular(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItemPopular?>? = null,
+	val results: List<ResultsItemPopular>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null

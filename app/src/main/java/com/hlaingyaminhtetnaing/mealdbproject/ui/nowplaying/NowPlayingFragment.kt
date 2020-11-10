@@ -9,13 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hlaingyaminhtetnaing.mealdbproject.R
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemNowPlaying
+import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemPopular
+import com.hlaingyaminhtetnaing.mealdbproject.ui.popular.PopularAdapter
+import com.hlaingyaminhtetnaing.mealdbproject.ui.popular.PopularFragmentDirections
 import kotlinx.android.synthetic.main.fragment_playing.*
 
-class NowPlayingFragment : Fragment(){
+class NowPlayingFragment : Fragment(),NowPlayingAdapter.ClickListener{
 
     private lateinit var nowPlayingViewModel: NowPlayingViewModel
     private lateinit var nowPlayingAdapter: NowPlayingAdapter
@@ -45,6 +49,7 @@ class NowPlayingFragment : Fragment(){
         nowPlayingViewModel.getNowPlaying()?.observe(viewLifecycleOwner, Observer { playing ->
             nowPlayingAdapter.resultPlay(playing.results as List<ResultsItemNowPlaying>)
         })
+        nowPlayingAdapter.setOnClickListener(this)
     }
 
     override fun onResume() {
@@ -52,6 +57,11 @@ class NowPlayingFragment : Fragment(){
         nowPlayingViewModel.getLoadingPlay()
     }
 
+
+    override fun onClick(play: ResultsItemNowPlaying) {
+        var action = NowPlayingFragmentDirections.actionNavGalleryToDetailFragment(play.id.toString())
+        findNavController().navigate(action)
+    }
 
 
 }

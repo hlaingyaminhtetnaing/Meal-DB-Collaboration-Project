@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -37,7 +36,7 @@ class PopularFragment : Fragment() , PopularAdapter.ClickListener{
             layoutManager = GridLayoutManager(context, 2)
             adapter = popularAdapter
         }
-        popularViewModel.getPopular()?.observe(viewLifecycleOwner, Observer { popular ->
+        popularViewModel.getPopular().observe(viewLifecycleOwner, Observer { popular ->
             popularAdapter.resultPlay(popular.results as List<ResultsItemPopular>)
         })
         popularAdapter.setOnClickListener(this)
