@@ -10,17 +10,32 @@ import kotlinx.android.synthetic.main.item_popular.view.*
 
 class PopularAdapter : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
 
+    var clickListener: ClickListener? = null
+
+    fun setOnClickListener (clickListener: ClickListener){
+        this.clickListener = clickListener
+    }
 
     private var popularList: List<ResultsItemPopular> = ArrayList()
 
 
-    class PopularViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class PopularViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) , View.OnClickListener{
 
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        lateinit var play: ResultsItemPopular
         fun bindPlay(play: ResultsItemPopular) {
+            this.play=play
             Picasso.get()
                 .load("https://image.tmdb.org/t/p/w500/" + play.posterPath)
                 .into(itemView.imgPopular)
             itemView.txtPopularName.text = play.title
+        }
+
+        override fun onClick(p0: View?) {
+            clickListener?.onClick(play)
         }
     }
 
@@ -43,5 +58,8 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() 
         return popularList.size
     }
 
+    interface ClickListener {
+        fun onClick(play: ResultsItemPopular)
+    }
 
 }

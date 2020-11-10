@@ -8,12 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hlaingyaminhtetnaing.mealdbproject.R
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemPopular
 import kotlinx.android.synthetic.main.fragment_popular.*
 
-class PopularFragment : Fragment() {
+class PopularFragment : Fragment() , PopularAdapter.ClickListener{
 
     private lateinit var popularViewModel: PopularViewModel
     private lateinit var popularAdapter: PopularAdapter
@@ -39,6 +40,7 @@ class PopularFragment : Fragment() {
         popularViewModel.getNowPlaying()?.observe(viewLifecycleOwner, Observer { playing ->
             popularAdapter.resultPlay(playing.results as List<ResultsItemPopular>)
         })
+        popularAdapter.setOnClickListener(this)
     }
 
     override fun onResume() {
@@ -46,6 +48,9 @@ class PopularFragment : Fragment() {
         popularViewModel.getLoadingPlay()
     }
 
-
+    override fun onClick(play: ResultsItemPopular) {
+        var action = PopularFragmentDirections.actionNavHomeToDetailFragment(play.id.toString())
+        findNavController().navigate(action)
+    }
 
 }
