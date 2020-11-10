@@ -11,7 +11,7 @@
         android:label="@string/menu_popular"
         tools:layout="@layout/fragment_popular" >
         <action
-            android:id="@+id/action_nav_home_to_detailFragment2"
+            android:id="@+id/action_nav_home_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
 
@@ -29,27 +29,36 @@
         android:id="@+id/nav_slideshow"
         android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.latestmovie.LatestMovieFragment"
         android:label="@string/menu_lastestmovie"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_slideshow" >
+        <action
+            android:id="@+id/action_nav_slideshow_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_toprated"
         android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.toprated.TopRatedFragment"
         android:label="Top Rated"
-        tools:layout="@layout/fragment_top_rated" />
+        tools:layout="@layout/fragment_top_rated" >
+        <action
+            android:id="@+id/action_nav_toprated_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_upcoming"
         android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.upcoming.UpComingFragment"
         android:label="Up Coming"
-        tools:layout="@layout/fragment_up_coming" />
+        tools:layout="@layout/fragment_up_coming" >
+        <action
+            android:id="@+id/action_nav_upcoming_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.hlaingyaminhtetnaing.mealdbproject.ui.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <argument
-            android:name="popular"
-            app:argType="com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemPopular" />
-        <argument
-            android:name="playing"
-            app:argType="com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemNowPlaying" />
+            android:name="id"
+            app:argType="string" />
     </fragment>
 </navigation>
