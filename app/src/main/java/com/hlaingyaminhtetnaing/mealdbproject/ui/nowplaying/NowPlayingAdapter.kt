@@ -28,7 +28,6 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.PlayingViewHold
     fun resultPlay(playList: List<ResultsItemNowPlaying>) {
         this.playingList = playList
         notifyDataSetChanged()
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayingViewHolder {
