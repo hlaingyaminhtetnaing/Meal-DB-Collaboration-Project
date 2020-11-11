@@ -56,7 +56,7 @@ class UpComingFragment : Fragment() ,UpComingAdapter.ClickListener{
     }
 
     override fun onClick(result: ResultsItemUpcoming) {
-        var action = UpComingFragmentDirections1.actionNavUpcomingToDetailFragment(result.id.toString())
+        var action = UpComingFragmentDirections.actionNavUpcomingToDetailFragment(result.id.toString())
         findNavController().navigate(action)
     }
 
