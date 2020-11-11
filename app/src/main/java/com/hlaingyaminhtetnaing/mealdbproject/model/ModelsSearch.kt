@@ -4,7 +4,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-data class ModelPopular(
+data class ModelsSearch(
 
 	@field:SerializedName("page")
 	val page: Int? = null,
@@ -13,13 +13,13 @@ data class ModelPopular(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItemPopular>? = null,
+	val results: List<ResultsItemSearch?>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null
 )
 @Parcelize
-data class ResultsItemPopular(
+data class ResultsItemSearch(
 
 	@field:SerializedName("overview")
 	val overview: String? = null,
@@ -45,6 +45,9 @@ data class ResultsItemPopular(
 	@field:SerializedName("backdrop_path")
 	val backdropPath: String? = null,
 
+	@field:SerializedName("media_type")
+	val mediaType: String? = null,
+
 	@field:SerializedName("release_date")
 	val releaseDate: String? = null,
 
@@ -52,7 +55,7 @@ data class ResultsItemPopular(
 	val popularity: Double? = null,
 
 	@field:SerializedName("vote_average")
-	val voteAverage: Double? = null,
+	val voteAverage: Int? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,
@@ -61,5 +64,17 @@ data class ResultsItemPopular(
 	val adult: Boolean? = null,
 
 	@field:SerializedName("vote_count")
-	val voteCount: Int? = null
+	val voteCount: Int? = null,
+
+	@field:SerializedName("first_air_date")
+	val firstAirDate: String? = null,
+
+	@field:SerializedName("origin_country")
+	val originCountry: List<String?>? = null,
+
+	@field:SerializedName("original_name")
+	val originalName: String? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null
 ): Parcelable

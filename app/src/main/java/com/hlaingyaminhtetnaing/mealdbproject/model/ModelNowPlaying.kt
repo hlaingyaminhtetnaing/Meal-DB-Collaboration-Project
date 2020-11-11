@@ -1,6 +1,9 @@
 package com.hlaingyaminhtetnaing.mealdbproject.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+
 
 data class ModelNowPlaying(
 
@@ -19,7 +22,7 @@ data class ModelNowPlaying(
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null
 )
-
+@Parcelize
 data class ResultsItemNowPlaying(
 
 	@field:SerializedName("overview")
@@ -63,7 +66,7 @@ data class ResultsItemNowPlaying(
 
 	@field:SerializedName("vote_count")
 	val voteCount: Int? = null
-)
+): Parcelable
 
 data class DatesNowPlaying(
 

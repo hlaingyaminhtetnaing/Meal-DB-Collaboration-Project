@@ -14,30 +14,31 @@ import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemNowPlaying
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemTopRated
 import com.hlaingyaminhtetnaing.mealdbproject.ui.nowplaying.NowPlayingAdapter
 import com.hlaingyaminhtetnaing.mealdbproject.ui.nowplaying.NowPlayingViewModel
+import com.hlaingyaminhtetnaing.mealdbproject.ui.popular.PopularFragmentDirections
 import kotlinx.android.synthetic.main.fragment_playing.*
 import kotlinx.android.synthetic.main.fragment_top_rated.*
 
 
+<<<<<<< HEAD
 class TopRatedFragment : Fragment() , TopRateAdapter.ClickListener {
+=======
+class TopRatedFragment : Fragment(),TopRateAdapter.ClickListener {
+>>>>>>> 075172b64b4b8d5a0c5ffe79c5fd729722bc967d
 
-    lateinit var viewModel: TopRatedViewModel
-    lateinit var topRatedAdapter : TopRateAdapter
+   private lateinit var viewModel: TopRatedViewModel
+   private lateinit var topRatedAdapter : TopRateAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         viewModel = ViewModelProvider(this).get(TopRatedViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_top_rated, container, false)
-
-
         return root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TopRatedViewModel::class.java)
 
+        viewModel = ViewModelProvider(this).get(TopRatedViewModel::class.java)
         topRatedAdapter = TopRateAdapter()
 
         recyclerTopRated.apply {
@@ -48,9 +49,13 @@ class TopRatedFragment : Fragment() , TopRateAdapter.ClickListener {
         viewModel.getTopRated().observe(
             viewLifecycleOwner, Observer {
                 topRatedAdapter.resultList(it.results as List<ResultsItemTopRated>)
+<<<<<<< HEAD
             }
         )
 
+=======
+            })
+>>>>>>> 075172b64b4b8d5a0c5ffe79c5fd729722bc967d
         topRatedAdapter.setOnClickListener(this)
     }
 
@@ -59,8 +64,13 @@ class TopRatedFragment : Fragment() , TopRateAdapter.ClickListener {
         viewModel.loadTopRated()
     }
 
+<<<<<<< HEAD
     override fun onClick(result: ResultsItemTopRated) {
         var action = TopRatedFragmentDirections.actionNavTopratedToDetailFragment(result.id.toString())
+=======
+    override fun onClick(play: ResultsItemTopRated) {
+        var action = TopRatedFragmentDirections.actionNavTopratedToDetailFragment(play.id.toString())
+>>>>>>> 075172b64b4b8d5a0c5ffe79c5fd729722bc967d
         findNavController().navigate(action)
     }
 }

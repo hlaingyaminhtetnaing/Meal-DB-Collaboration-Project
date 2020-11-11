@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.hlaingyaminhtetnaing.mealdbproject.R
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemPopular
 import kotlinx.android.synthetic.main.fragment_popular.*
+import kotlinx.android.synthetic.main.item_search.*
 
 class PopularFragment : Fragment() , PopularAdapter.ClickListener{
 
@@ -33,12 +33,14 @@ class PopularFragment : Fragment() , PopularAdapter.ClickListener{
 
         popularViewModel = ViewModelProvider(this).get(PopularViewModel::class.java)
         popularAdapter = PopularAdapter()
+
+
         popularRecycler.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = popularAdapter
         }
-        popularViewModel.getNowPlaying()?.observe(viewLifecycleOwner, Observer { playing ->
-            popularAdapter.resultPlay(playing.results as List<ResultsItemPopular>)
+        popularViewModel.getPopular().observe(viewLifecycleOwner, Observer { popular ->
+            popularAdapter.resultPlay(popular.results as List<ResultsItemPopular>)
         })
         popularAdapter.setOnClickListener(this)
     }

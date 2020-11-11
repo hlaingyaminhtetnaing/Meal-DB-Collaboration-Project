@@ -14,7 +14,7 @@ class PopularViewModel : ViewModel() {
 
     private var popularModel:MutableLiveData<ModelPopular> = MutableLiveData()
 
-    fun getNowPlaying(): LiveData<ModelPopular> =popularModel
+    fun getPopular(): LiveData<ModelPopular> =popularModel
 
     fun getLoadingPlay() {
         var apiClient = MovieClient()

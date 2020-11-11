@@ -1,15 +1,14 @@
 <resources>
-    <string name="app_name">Meal DB Project</string>
+    <string name="app_name">Movie DB Project</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Movie DB</string>
-    <string name="nav_header_subtitle">hlaingyaminhtenaing@gmail.com</string>
+    <string name="nav_header_subtitle">hlaingyaminhtetnaing@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
 
     <string name="menu_popular">Popular</string>
     <string name="menu_nowplaying">Now Playing</string>
-    <string name="menu_lastestmovie">Latest Movie</string>
     <string name="menu_toprated">Top Rated</string>
     <string name="menu_upcoming">Up Coming</string>
     <!-- TODO: Remove or change this placeholder text -->
