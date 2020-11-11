@@ -7,15 +7,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MovieClient {
     private val BASE_URL="https://api.themoviedb.org/3/movie/"
+    val movieApiInterface :MovieApiInterface
 
-    private var movieApiInterface:MovieApiInterface
     init {
-
-        val retrofit= Retrofit.Builder()
+        val retrofit=Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
         movieApiInterface=retrofit.create(MovieApiInterface::class.java)
     }
 
@@ -37,5 +35,7 @@ class MovieClient {
     fun getDetail(movie_id:Int,api_key: String): Call<ModelDetail> {
         return movieApiInterface.getDetail(movie_id,api_key)
     }
-
+    fun getSearch(api_key: String,query:String): Call<ModelsSearch> {
+        return movieApiInterface.getSearch(api_key,query)
+    }
 }

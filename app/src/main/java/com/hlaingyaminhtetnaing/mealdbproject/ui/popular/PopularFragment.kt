@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.hlaingyaminhtetnaing.mealdbproject.R
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemPopular
 import kotlinx.android.synthetic.main.fragment_popular.*
+import kotlinx.android.synthetic.main.item_search.*
 
 class PopularFragment : Fragment() , PopularAdapter.ClickListener{
 
@@ -32,6 +33,8 @@ class PopularFragment : Fragment() , PopularAdapter.ClickListener{
 
         popularViewModel = ViewModelProvider(this).get(PopularViewModel::class.java)
         popularAdapter = PopularAdapter()
+
+
         popularRecycler.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = popularAdapter
