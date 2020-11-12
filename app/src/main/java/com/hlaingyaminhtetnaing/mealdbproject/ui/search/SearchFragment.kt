@@ -3,6 +3,7 @@ package com.hlaingyaminhtetnaing.mealdbproject.ui.search
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -51,16 +52,19 @@ class SearchFragment : Fragment(), SearchAdapter.ClickListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        val menuItem = menu?.findItem(R.id.searrch)
+        val menuItem = menu?.findItem(R.id.search)
         val searchManager =activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = menuItem.actionView as SearchView
         searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
         searchView.setOnQueryTextListener (object :SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+                Log.i("TextChange: >>>>>>", query!!)
+                return true
+
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+
                 viewModel.getLoadingPlay(newText.toString())
                 viewModel.getSearch().observe(
                     viewLifecycleOwner, Observer {
