@@ -4,20 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.popular.PopularFragment">
+    tools:context=".ui.search.SearchActivity">
 
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popularRecycler"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerSearch"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="match_parent"
+        android:text="Hello"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,7 +55,7 @@ data class ResultsItemSearch(
 	val popularity: Double? = null,
 
 	@field:SerializedName("vote_average")
-	val voteAverage: Int? = null,
+	val voteAverage: Double? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,

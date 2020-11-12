@@ -19,11 +19,9 @@ import kotlinx.android.synthetic.main.fragment_playing.*
 import kotlinx.android.synthetic.main.fragment_top_rated.*
 
 
-<<<<<<< HEAD
-class TopRatedFragment : Fragment() , TopRateAdapter.ClickListener {
-=======
+
 class TopRatedFragment : Fragment(),TopRateAdapter.ClickListener {
->>>>>>> 075172b64b4b8d5a0c5ffe79c5fd729722bc967d
+
 
    private lateinit var viewModel: TopRatedViewModel
    private lateinit var topRatedAdapter : TopRateAdapter
@@ -42,35 +40,25 @@ class TopRatedFragment : Fragment(),TopRateAdapter.ClickListener {
         topRatedAdapter = TopRateAdapter()
 
         recyclerTopRated.apply {
-            layoutManager = GridLayoutManager(context,2)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = topRatedAdapter
         }
 
         viewModel.getTopRated().observe(
             viewLifecycleOwner, Observer {
                 topRatedAdapter.resultList(it.results as List<ResultsItemTopRated>)
-<<<<<<< HEAD
             }
         )
-
-=======
-            })
->>>>>>> 075172b64b4b8d5a0c5ffe79c5fd729722bc967d
         topRatedAdapter.setOnClickListener(this)
     }
-
     override fun onResume() {
         super.onResume()
         viewModel.loadTopRated()
     }
 
-<<<<<<< HEAD
-    override fun onClick(result: ResultsItemTopRated) {
-        var action = TopRatedFragmentDirections.actionNavTopratedToDetailFragment(result.id.toString())
-=======
+
     override fun onClick(play: ResultsItemTopRated) {
         var action = TopRatedFragmentDirections.actionNavTopratedToDetailFragment(play.id.toString())
->>>>>>> 075172b64b4b8d5a0c5ffe79c5fd729722bc967d
         findNavController().navigate(action)
     }
 }

@@ -7,6 +7,7 @@ import com.hlaingyaminhtetnaing.mealdbproject.R
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemSearch
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_search.view.*
+import java.lang.reflect.Array
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
 
@@ -25,6 +26,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
                 this.play=play
             Picasso.get()
                 .load("https://image.tmdb.org/t/p/w500/" + play.posterPath)
+                .placeholder(R.drawable.ic_menu_gallery)
                 .into(itemView.imgSearch)
             itemView.txtSearch.text = play.title
         }
@@ -42,7 +44,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.item_popular, parent, false)
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.item_search, parent, false)
         return SearchViewHolder(view)
     }
 
@@ -58,5 +60,10 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     }
     interface ClickListener {
         fun onClick(play: ResultsItemSearch)
+    }
+
+    fun clearData () {
+        searchList = ArrayList()
+        notifyDataSetChanged()
     }
 }

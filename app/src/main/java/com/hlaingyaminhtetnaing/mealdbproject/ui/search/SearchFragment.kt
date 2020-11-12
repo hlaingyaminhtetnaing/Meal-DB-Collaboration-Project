@@ -3,6 +3,7 @@ package com.hlaingyaminhtetnaing.mealdbproject.ui.search
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -30,17 +31,12 @@ class SearchFragment : Fragment(), SearchAdapter.ClickListener {
 
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         searchAdapter = SearchAdapter()
-        var query=txtSearch.text.toString()
-        viewModel.getSearch().observe(
-            viewLifecycleOwner, Observer {
-                searchAdapter.resultPlay(it.results as List<ResultsItemSearch>)
-            })
         SearchRecycler.apply {
             layoutManager = GridLayoutManager(context,2)
             adapter = searchAdapter
         }
-        viewModel.getLoadingPlay(query)
-        searchAdapter.setOnClickListener(this)
+
+
     }
 
     override fun onClick(play: ResultsItemSearch) {
@@ -57,20 +53,23 @@ class SearchFragment : Fragment(), SearchAdapter.ClickListener {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
         searchView.setOnQueryTextListener (object :SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
+
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 viewModel.getLoadingPlay(newText.toString())
-                viewModel.getSearch().observe(
-                    viewLifecycleOwner, Observer {
-                        searchAdapter.resultPlay(it.results as List<ResultsItemSearch>)
-                    })
                 SearchRecycler.apply {
                     layoutManager = GridLayoutManager(context,2)
                     adapter = searchAdapter
                 }
 
+                viewModel.getSearch().observe(
+                    viewLifecycleOwner, Observer {
+                        searchAdapter.resultPlay(it.results as List<ResultsItemSearch>)
+                    })
+
+                Log.d("querySearch>>", newText!!)
                 return true
             }
 

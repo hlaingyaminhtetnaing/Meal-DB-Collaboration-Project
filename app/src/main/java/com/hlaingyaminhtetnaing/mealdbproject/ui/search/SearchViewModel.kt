@@ -18,6 +18,7 @@ class SearchViewModel : ViewModel() {
     fun getSearch(): LiveData<ModelsSearch> =searchViewModel
 
     fun getLoadingPlay(query:String) {
+        Log.d("query>>",query)
         var apiClient = MovieClient()
         var call = apiClient.getSearch(
             "9ef2ef916822104b0887b6c1419c6e7c",query
