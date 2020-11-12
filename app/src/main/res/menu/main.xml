@@ -2,10 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/search"
+        android:id="@+id/searrch"
+        android:icon="@android:drawable/ic_menu_search"
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_search_24"
-        />
+        app:showAsAction="always" />
 </menu>

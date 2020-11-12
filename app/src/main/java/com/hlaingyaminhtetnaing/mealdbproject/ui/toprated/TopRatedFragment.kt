@@ -19,7 +19,9 @@ import kotlinx.android.synthetic.main.fragment_playing.*
 import kotlinx.android.synthetic.main.fragment_top_rated.*
 
 
+
 class TopRatedFragment : Fragment(),TopRateAdapter.ClickListener {
+
 
    private lateinit var viewModel: TopRatedViewModel
    private lateinit var topRatedAdapter : TopRateAdapter
@@ -38,21 +40,22 @@ class TopRatedFragment : Fragment(),TopRateAdapter.ClickListener {
         topRatedAdapter = TopRateAdapter()
 
         recyclerTopRated.apply {
-            layoutManager = GridLayoutManager(context,2)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = topRatedAdapter
         }
 
         viewModel.getTopRated().observe(
             viewLifecycleOwner, Observer {
                 topRatedAdapter.resultList(it.results as List<ResultsItemTopRated>)
-            })
+            }
+        )
         topRatedAdapter.setOnClickListener(this)
     }
-
     override fun onResume() {
         super.onResume()
         viewModel.loadTopRated()
     }
+
 
     override fun onClick(play: ResultsItemTopRated) {
         var action = TopRatedFragmentDirections.actionNavTopratedToDetailFragment(play.id.toString())

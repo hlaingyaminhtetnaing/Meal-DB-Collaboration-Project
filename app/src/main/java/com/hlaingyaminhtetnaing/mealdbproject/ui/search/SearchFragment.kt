@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.item_search.*
 
 class SearchFragment : Fragment(), SearchAdapter.ClickListener {
+
     private lateinit var viewModel: SearchViewModel
     private lateinit var searchAdapter : SearchAdapter
     override fun onCreateView(
@@ -31,23 +32,15 @@ class SearchFragment : Fragment(), SearchAdapter.ClickListener {
 
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         searchAdapter = SearchAdapter()
-        var query=txtSearch.text.toString()
-        viewModel.getSearch().observe(
-            viewLifecycleOwner, Observer {
-                searchAdapter.resultPlay(it.results as List<ResultsItemSearch>)
-            })
         SearchRecycler.apply {
             layoutManager = GridLayoutManager(context,2)
             adapter = searchAdapter
         }
-        viewModel.getLoadingPlay(query)
-        searchAdapter.setOnClickListener(this)
+
+
     }
 
-    override fun onClick(play: ResultsItemSearch) {
-        var action=SearchFragmentDirections.actionNavSearchToDetailFragment(play.id.toString())
-        findNavController().navigate(action)
-    }
+
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -58,27 +51,33 @@ class SearchFragment : Fragment(), SearchAdapter.ClickListener {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
         searchView.setOnQueryTextListener (object :SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
+
                 Log.i("TextChange: >>>>>>", query!!)
                 return true
-
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
 
                 viewModel.getLoadingPlay(newText.toString())
-                viewModel.getSearch().observe(
-                    viewLifecycleOwner, Observer {
-                        searchAdapter.resultPlay(it.results as List<ResultsItemSearch>)
-                    })
                 SearchRecycler.apply {
                     layoutManager = GridLayoutManager(context,2)
                     adapter = searchAdapter
                 }
 
+                viewModel.getSearch().observe(
+                    viewLifecycleOwner, Observer {
+                        searchAdapter.resultPlay(it.results as List<ResultsItemSearch>)
+                    })
+
+                Log.d("querySearch>>", newText!!)
                 return true
             }
 
         })
+    }
+
+    override fun onClickSearch(play: ResultsItemSearch) {
+
     }
 
 }
