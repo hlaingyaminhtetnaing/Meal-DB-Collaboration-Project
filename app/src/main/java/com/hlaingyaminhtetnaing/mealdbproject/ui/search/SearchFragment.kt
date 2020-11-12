@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.item_search.*
 
 class SearchFragment : Fragment(), SearchAdapter.ClickListener {
+
     private lateinit var viewModel: SearchViewModel
     private lateinit var searchAdapter : SearchAdapter
     override fun onCreateView(
@@ -39,10 +40,7 @@ class SearchFragment : Fragment(), SearchAdapter.ClickListener {
 
     }
 
-    override fun onClick(play: ResultsItemSearch) {
-        var action=SearchFragmentDirections.actionNavSearchToDetailFragment(play.id.toString())
-        findNavController().navigate(action)
-    }
+
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -74,6 +72,10 @@ class SearchFragment : Fragment(), SearchAdapter.ClickListener {
             }
 
         })
+    }
+
+    override fun onClickSearch(play: ResultsItemSearch) {
+
     }
 
 }

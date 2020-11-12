@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hlaingyaminhtetnaing.mealdbproject.R
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemSearch
+import com.hlaingyaminhtetnaing.mealdbproject.ui.popular.PopularFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_search.view.*
-import java.lang.reflect.Array
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
 
@@ -32,7 +32,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
         }
 
         override fun onClick(v: View?) {
-            clickListener?.onClick(play)
+            clickListener?.onClickSearch(play)
         }
 
     }
@@ -55,11 +55,11 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.bindPlay(searchList[position])
     }
-    fun setOnClickListener(clickListener: SearchFragment){
+    fun setOnClickListener(clickListener: PopularFragment){
         this.clickListener=clickListener
     }
     interface ClickListener {
-        fun onClick(play: ResultsItemSearch)
+        fun onClickSearch(play: ResultsItemSearch)
     }
 
     fun clearData () {

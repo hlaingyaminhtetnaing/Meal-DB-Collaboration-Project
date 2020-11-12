@@ -18,9 +18,8 @@ import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemSearch
 import com.hlaingyaminhtetnaing.mealdbproject.ui.search.SearchAdapter
 import com.hlaingyaminhtetnaing.mealdbproject.ui.search.SearchViewModel
 import kotlinx.android.synthetic.main.fragment_popular.*
-import java.util.*
 
-class PopularFragment : Fragment() , PopularAdapter.ClickListener{
+class PopularFragment : Fragment() , PopularAdapter.ClickListener ,SearchAdapter.ClickListener{
 
     private lateinit var searchViewModel : SearchViewModel
     private lateinit var searchAdapter : SearchAdapter
@@ -68,6 +67,9 @@ class PopularFragment : Fragment() , PopularAdapter.ClickListener{
             popularAdapter.resultPlay(popular.results as List<ResultsItemPopular>)
         })
         popularAdapter.setOnClickListener(this)
+        searchAdapter.setOnClickListener(this)
+
+
     }
 
     override fun onResume() {
@@ -132,6 +134,10 @@ class PopularFragment : Fragment() , PopularAdapter.ClickListener{
         }
     }
 
+    override fun onClickSearch(play: ResultsItemSearch) {
+        var action = PopularFragmentDirections.actionNavHomeToDetailFragment(play.id.toString())
+        findNavController().navigate(action)
+    }
 
 
 }
