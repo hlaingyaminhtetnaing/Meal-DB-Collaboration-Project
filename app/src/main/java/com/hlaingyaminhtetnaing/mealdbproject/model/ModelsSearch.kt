@@ -13,7 +13,7 @@ data class ModelsSearch(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItemSearch?>? = null,
+	val results: List<ResultsItemSearch>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null

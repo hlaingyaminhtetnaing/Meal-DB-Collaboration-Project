@@ -11,7 +11,7 @@ data class ModelTopRated(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItemTopRated?>? = null,
+	val results: List<ResultsItemTopRated>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null

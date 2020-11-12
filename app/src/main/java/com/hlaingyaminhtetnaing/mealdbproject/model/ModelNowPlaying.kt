@@ -17,7 +17,7 @@ data class ModelNowPlaying(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItemNowPlaying?>? = null,
+	val results: List<ResultsItemNowPlaying>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null

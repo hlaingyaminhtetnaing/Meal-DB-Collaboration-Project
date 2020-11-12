@@ -14,7 +14,7 @@ data class ModelUpcoming(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItemUpcoming?>? = null,
+	val results: List<ResultsItemUpcoming>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null
