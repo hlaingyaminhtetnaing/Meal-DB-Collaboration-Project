@@ -17,6 +17,7 @@ import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemPopular
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemSearch
 import com.hlaingyaminhtetnaing.mealdbproject.ui.search.SearchAdapter
 import com.hlaingyaminhtetnaing.mealdbproject.ui.search.SearchViewModel
+import kotlinx.android.synthetic.main.fragment_playing.view.*
 import kotlinx.android.synthetic.main.fragment_popular.*
 
 class PopularFragment : Fragment() , PopularAdapter.ClickListener ,SearchAdapter.ClickListener{
@@ -96,6 +97,7 @@ class PopularFragment : Fragment() , PopularAdapter.ClickListener ,SearchAdapter
         }
 
         if (searchView != null) {
+
             searchView.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName));
             searchView.setOnCloseListener(object : SearchView.OnCloseListener {
                 override fun onClose(): Boolean {

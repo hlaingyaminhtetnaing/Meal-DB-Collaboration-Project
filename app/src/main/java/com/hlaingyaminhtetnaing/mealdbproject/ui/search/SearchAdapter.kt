@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hlaingyaminhtetnaing.mealdbproject.R
 import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemSearch
+import com.hlaingyaminhtetnaing.mealdbproject.ui.nowplaying.NowPlayingAdapter
 import com.hlaingyaminhtetnaing.mealdbproject.ui.popular.PopularFragment
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_search.view.*
+import kotlinx.android.synthetic.main.item_movie_recyclerview.view.*
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
 
@@ -27,8 +28,8 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
             Picasso.get()
                 .load("https://image.tmdb.org/t/p/w500/" + play.posterPath)
                 .placeholder(R.drawable.ic_menu_gallery)
-                .into(itemView.imgSearch)
-            itemView.txtSearch.text = play.title
+                .into(itemView.recyclerimage)
+            itemView.recyclertxt.text = play.title
         }
 
         override fun onClick(v: View?) {
@@ -44,7 +45,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.item_search, parent, false)
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie_recyclerview, parent, false)
         return SearchViewHolder(view)
     }
 
@@ -55,7 +56,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.bindPlay(searchList[position])
     }
-    fun setOnClickListener(clickListener: PopularFragment){
+    fun setOnClickListener(clickListener: ClickListener){
         this.clickListener=clickListener
     }
     interface ClickListener {

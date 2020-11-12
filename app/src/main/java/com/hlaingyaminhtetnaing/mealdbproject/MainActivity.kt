@@ -1,13 +1,6 @@
 package com.hlaingyaminhtetnaing.mealdbproject
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.SearchView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -17,17 +10,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
-import com.hlaingyaminhtetnaing.mealdbproject.model.ResultsItemSearch
-import com.hlaingyaminhtetnaing.mealdbproject.ui.search.SearchActivity
 import com.hlaingyaminhtetnaing.mealdbproject.ui.search.SearchAdapter
-import com.hlaingyaminhtetnaing.mealdbproject.ui.search.SearchFragment
 import com.hlaingyaminhtetnaing.mealdbproject.ui.search.SearchViewModel
-import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : AppCompatActivity() {
